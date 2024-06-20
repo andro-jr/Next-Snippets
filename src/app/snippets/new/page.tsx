@@ -1,28 +1,17 @@
-import { db } from "@/db";
-import { permanentRedirect } from "next/navigation";
+"use client";
+
+import * as actions from "@/actions";
 import React from "react";
+import { useFormState } from "react-dom";
 
 const CreateSnippet = () => {
-  const createSnippet = async (formData: FormData) => {
-    // This needs to be an serve action
-    "use server";
-    const title = formData.get("title") as string;
-    const code = formData.get("code") as string;
-
-    const snippet = await db.snippet.create({
-      data: {
-        title,
-        code,
-      },
-    });
-    console.log("snippet :", snippet);
-
-    permanentRedirect("/");
-  };
+  const [formState, action] = useFormState(actions.createSnippet, {
+    message: "",
+  });
 
   return (
     <form
-      action={createSnippet}
+      action={action}
       className="max-w-2xl mx-auto p-6 bg-gray-800 rounded-lg shadow-lg mt-10"
     >
       <h3 className="text-2xl font-bold text-white mb-6">Create a Snippet</h3>
@@ -46,6 +35,7 @@ const CreateSnippet = () => {
             className="border rounded px-3 py-2 w-full bg-gray-700 text-white h-40"
           />
         </div>
+        {<div className="text-red-600">{formState.message}</div>}
         <button className="self-end px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
           Create
         </button>
