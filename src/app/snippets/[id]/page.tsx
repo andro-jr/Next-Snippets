@@ -51,7 +51,7 @@ const DeleteIcon = () => (
 const SnippetDetails: React.FC<SnippetDetailsProp> = async ({ params }) => {
   const id = parseInt(params.id);
 
-  await new Promise((r) => setTimeout(r, 5000));
+  await new Promise((r) => setTimeout(r, 2000));
 
   const snippet = await db.snippet.findFirst({
     where: {
