@@ -4,4 +4,11 @@
 
 body {
   @apply bg-gradient-to-r from-purple-600 via-purple-800 to-purple-900 animate-gradient-x min-h-screen text-white;
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
 }
