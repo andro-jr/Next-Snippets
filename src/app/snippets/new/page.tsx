@@ -1,8 +1,27 @@
+import { db } from "@/db";
+import { permanentRedirect } from "next/navigation";
 import React from "react";
 
 const CreateSnippet = () => {
+  const createSnippet = async (formData: FormData) => {
+    // This needs to be an serve action
+    "use server";
+    const title = formData.get("title") as string;
+    const code = formData.get("code") as string;
+
+    const snippet = await db.snippet.create({
+      data: {
+        title,
+        code,
+      },
+    });
+    console.log("snippet :", snippet);
+
+    permanentRedirect("/");
+  };
+
   return (
-    <form action="" className="">
+    <form action={createSnippet} className="">
       <h3 className="font-bold m-3">Create a Snippet</h3>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
