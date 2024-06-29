@@ -17,7 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        <div className="container mx-auto px-12"> {children} </div>
+        <div className="container mx-auto px-12">
+          <div className="min-h-screen flex flex-col items-center justify-center text-white">
+            {children}
+          </div>{" "}
+        </div>
       </body>
     </html>
   );

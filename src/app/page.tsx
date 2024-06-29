@@ -17,7 +17,7 @@ const Home = async () => {
   ));
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-white">
+    <>
       <div className="container mx-auto text-center px-4 flex w-full justify-between items-center mb-6">
         <h1 className="text-4xl font-bold text-white">Code Snippets</h1>
         <div>
@@ -30,7 +30,7 @@ const Home = async () => {
       <div className="container mx-auto text-center px-4">
         {renderedSnippets}
       </div>
-    </div>
+    </>
   );
 };
 
