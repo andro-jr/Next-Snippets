@@ -1,4 +1,5 @@
 import { db } from "@/db";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -65,10 +66,13 @@ const SnippetDetails: React.FC<SnippetDetailsProp> = async ({ params }) => {
       <div className="flex justify-between items-center mb-4 gap-4">
         <h1 className="text-3xl font-bold text-white">{snippet.title}</h1>
         <div className="flex gap-1">
-          <button className="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md mr-2 transition duration-300 flex items-center">
+          <Link
+            href={`/snippets/${id}/edit`}
+            className="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md mr-2 transition duration-300 flex items-center"
+          >
             <EditIcon />
             Edit
-          </button>
+          </Link>
           <button className="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 flex items-center">
             <DeleteIcon />
             Delete
