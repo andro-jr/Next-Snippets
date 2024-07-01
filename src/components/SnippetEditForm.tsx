@@ -4,6 +4,7 @@ import type { Snippet } from "@prisma/client";
 import React, { useState } from "react";
 
 import Editor from "@monaco-editor/react";
+import { editSnippet } from "@/actions";
 
 interface SnippetEditFormProps {
   snippet: Snippet;
@@ -14,6 +15,7 @@ const SnippetEditForm = ({ snippet }: SnippetEditFormProps) => {
 
   const handleEditorChange = (value: string = "") => {
     setCode(value);
+    editSnippet();
   };
 
   return (
