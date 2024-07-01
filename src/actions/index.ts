@@ -1,5 +1,15 @@
 "use server";
 
-export const editSnippet = async () => {
-  console.log("edit snippet called");
+import { db } from "@/db";
+import { redirect } from "next/navigation";
+
+export const editSnippet = async (id: number, code: string) => {
+  await db.snippet.update({
+    where: {
+      id,
+    },
+    data: { code },
+  });
+
+  redirect(`/snippets/${id}`);
 };
