@@ -21,9 +21,12 @@ const Home = async () => {
       <div className="container mx-auto text-center px-4 flex w-full justify-between items-center mb-6">
         <h1 className="text-4xl font-bold text-white">Code Snippets</h1>
         <div>
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300">
+          <Link
+            href="/snippets/new"
+            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
+          >
             New
-          </button>
+          </Link>
         </div>
       </div>
 

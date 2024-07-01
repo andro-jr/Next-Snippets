@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
+import * as actions from "@/actions";
+
 interface SnippetDetailsProp {
   params: {
     id: string;
@@ -61,6 +63,8 @@ const SnippetDetails: React.FC<SnippetDetailsProp> = async ({ params }) => {
   });
   if (!snippet) return notFound();
 
+  const deleteSnippetAction = actions.deleteSnippet.bind(null, snippet.id);
+
   return (
     <div className="m-8 p-6 bg-gray-800 rounded-lg shadow-lg w-full">
       <div className="flex justify-between items-center mb-4 gap-4">
@@ -73,10 +77,12 @@ const SnippetDetails: React.FC<SnippetDetailsProp> = async ({ params }) => {
             <EditIcon />
             Edit
           </Link>
-          <button className="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 flex items-center">
-            <DeleteIcon />
-            Delete
-          </button>
+          <form action={deleteSnippetAction}>
+            <button className="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 flex items-center">
+              <DeleteIcon />
+              Delete
+            </button>
+          </form>
         </div>
       </div>
       <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto">
