@@ -21,8 +21,10 @@ const SnippetEditPage = async ({ params }: SnippetEditPageProps) => {
   if (!snippet) notFound();
 
   return (
-    <div>
-      SnippetEditPage {snippet.title}
+    <div className="max-w-4xl mx-auto p-6  mt-10">
+      <h1 className="text-2xl font-bold text-white mb-6">
+        Edit Snippet: {snippet.title}
+      </h1>
       <SnippetEditForm snippet={snippet} />
     </div>
   );
