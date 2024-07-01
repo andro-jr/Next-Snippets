@@ -21,26 +21,34 @@ const CreateSnippet = () => {
   };
 
   return (
-    <form action={createSnippet} className="">
-      <h3 className="font-bold m-3">Create a Snippet</h3>
+    <form
+      action={createSnippet}
+      className="max-w-2xl mx-auto p-6 bg-gray-800 rounded-lg shadow-lg mt-10"
+    >
+      <h3 className="text-2xl font-bold text-white mb-6">Create a Snippet</h3>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
-          <label htmlFor="title" className="w-12">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="title" className="text-white">
             Title
           </label>
           <input
             type="text"
             name="title"
-            className="border rounded o-2 w-full"
+            className="border rounded px-3 py-2 w-full bg-gray-700 text-white"
           />
         </div>
-        <div className="flex gap-4">
-          <label htmlFor="code" className="w-12">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="code" className="text-white">
             Code
           </label>
-          <textarea name="code" className="border rounded o-2 w-full" />
+          <textarea
+            name="code"
+            className="border rounded px-3 py-2 w-full bg-gray-700 text-white h-40"
+          />
         </div>
-        <button className="rounded p-2 bg-blue-200">Create</button>
+        <button className="self-end px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
+          Create
+        </button>
       </div>
     </form>
   );
