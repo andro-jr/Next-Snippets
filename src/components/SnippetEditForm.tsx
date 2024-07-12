@@ -20,7 +20,7 @@ const SnippetEditForm = ({ snippet }: SnippetEditFormProps) => {
   const editSnippetAction = actions.editSnippet.bind(null, snippet.id, code);
 
   return (
-    <div className="p-6 bg-gray-900 rounded-lg shadow-lg">
+    <div className="py-6 rounded-lg">
       <div className="mb-4">
         <Editor
           height="40vh"
