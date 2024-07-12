@@ -27,7 +27,6 @@ export const createSnippet = async (
   formState: { message: string },
   formData: FormData
 ) => {
-  ("use server");
   const title = formData.get("title");
   const code = formData.get("code");
 
@@ -36,18 +35,29 @@ export const createSnippet = async (
       message: "Title must be longer!",
     };
   }
+
   if (typeof code !== "string" || code.length < 3) {
     return {
       message: "Code must be longer!",
     };
   }
 
-  const snippet = await db.snippet.create({
-    data: {
-      title,
-      code,
-    },
-  });
+  try {
+    const snippet = await db.snippet.create({
+      data: {
+        title,
+        code,
+      },
+    });
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return {
+        message: err.message,
+      };
+    } else {
+      return { message: "Something Went wrong!" };
+    }
+  }
 
   redirect("/");
 };
