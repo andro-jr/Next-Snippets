@@ -35,7 +35,9 @@ const CreateSnippet = () => {
             className="border rounded px-3 py-2 w-full bg-gray-700 text-white h-40"
           />
         </div>
-        {<div className="text-red-600">{formState.message}</div>}
+        {formState.message && (
+          <div className="text-red-600">{formState.message}</div>
+        )}
         <button className="self-end px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
           Create
         </button>
