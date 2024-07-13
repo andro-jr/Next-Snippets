@@ -93,3 +93,13 @@ const SnippetDetails: React.FC<SnippetDetailsProp> = async ({ params }) => {
 };
 
 export default SnippetDetails;
+
+export const generateStaticParams = async () => {
+  const snippets = await db.snippet.findMany();
+
+  return snippets.map((snippet) => {
+    return {
+      id: snippet.id.toString(),
+    };
+  });
+};
