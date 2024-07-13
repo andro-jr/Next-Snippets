@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export const editSnippet = async (id: number, code: string) => {
@@ -19,6 +20,8 @@ export const deleteSnippet = async (id: number) => {
       id,
     },
   });
+
+  revalidatePath("/");
 
   redirect(`/`);
 };
@@ -49,6 +52,8 @@ export const createSnippet = async (
         code,
       },
     });
+
+    revalidatePath("/");
   } catch (err: unknown) {
     if (err instanceof Error) {
       return {
